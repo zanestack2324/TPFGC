@@ -977,6 +977,7 @@ svg {
 }
 
 .splash__loader {
+  display: none;
   width: fit-content;
   margin: 1rem auto 0;
   padding: 0.65rem 1.15rem;
@@ -984,6 +985,14 @@ svg {
   background: var(--paper);
   box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.8);
   transform: rotate(-1.5deg);
+}
+
+.splash.is-loading .splash__enter {
+  display: none;
+}
+
+.splash.is-loading .splash__loader {
+  display: block;
 }
 
 .splash__loader .loader {

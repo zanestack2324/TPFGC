@@ -25,16 +25,45 @@
 
   const splash = doc.getElementById('splash');
   const splashEnter = doc.getElementById('splash-enter');
+  const splashLoader = doc.getElementById('splash-loader');
+  const splashSound = doc.getElementById('splash-click-sound');
   const splashKey = 'tpfgc-welcome-seen';
 
+  const playClickSound = () => {
+    if (!splashSound) return;
+    try {
+      splashSound.currentTime = 0;
+      const playback = splashSound.play();
+      if (playback) playback.catch(() => {});
+    } catch {
+      return;
+    }
+  };
+
   if (splash) {
+    let enterTimer = null;
+
     const hideSplash = () => {
       if (splash.classList.contains('is-hidden')) return;
+      if (enterTimer) window.clearTimeout(enterTimer);
       splash.classList.add('is-hidden');
+      splash.classList.remove('is-loading');
       splash.setAttribute('aria-hidden', 'true');
+      splash.removeAttribute('aria-busy');
       body.classList.remove('splash-open');
       storage.set(splashKey, '1');
       if (doc.activeElement === splashEnter) splashEnter.blur();
+    };
+
+    const enterSplash = (event) => {
+      if (splash.classList.contains('is-hidden') || splash.classList.contains('is-loading')) return;
+      if (event) event.preventDefault();
+      playClickSound();
+      splash.classList.add('is-loading');
+      splash.setAttribute('aria-busy', 'true');
+      if (splashEnter) splashEnter.disabled = true;
+      if (splashLoader) splashLoader.setAttribute('aria-hidden', 'false');
+      enterTimer = window.setTimeout(hideSplash, 1100);
     };
 
     if (reduceMotion || storage.get(splashKey) === '1') {
@@ -44,7 +73,7 @@
     } else {
       body.classList.add('splash-open');
       splash.setAttribute('aria-hidden', 'false');
-      splash.addEventListener('click', hideSplash);
+      splash.addEventListener('click', enterSplash);
       if (splashEnter) {
         window.setTimeout(() => splashEnter.focus({ preventScroll: true }), 100);
       }
