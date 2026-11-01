@@ -92,14 +92,14 @@ window.addEventListener('load', function () {
     <symbol id="icon-dove" viewBox="0 0 24 24"><path d="M3 14c4.5 0 7.5-2 9-5 1.5 3 4.5 5 9 5-2.5 4-6.5 6-9 6s-6.5-2-9-6Z"/><path d="M12 9c.5-2.5 2-4 4.5-4.5"/></symbol>
   </svg>
   
-  <div class="splash" id="splash" aria-hidden="true">
+  <div class="splash" id="splash" role="dialog" aria-modal="true" aria-labelledby="splash-name" aria-describedby="splash-verse" aria-hidden="true">
     <div class="splash__inner">
-      <div class="splash__logo"><img src="LOGO.jpeg" alt="" width="190" height="190"></div>
+      <div class="splash__logo"><img src="LOGO.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="190" height="190"></div>
       <p class="splash__hand">Welcome to</p>
-      <p class="splash__name">The Pentecostal Faith<span>Gospel Centre</span></p>
+      <p class="splash__name" id="splash-name">The Pentecostal Faith<span>Gospel Centre</span></p>
       <div class="splash__line"><span></span></div>
-      <div class="splash__loader" aria-hidden="true"><span class="loader"></span></div>
-      <p class="splash__verse">&ldquo;Go ye therefore, and teach all nations&hellip;&rdquo; &mdash; Matthew 28:19</p>
+      <button class="btn btn--gold splash__enter" id="splash-enter" type="button">Enter Website <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+      <p class="splash__verse" id="splash-verse">&ldquo;Go ye therefore, and teach all nations&hellip;&rdquo; &mdash; Matthew 28:19</p>
     </div>
   </div>
   

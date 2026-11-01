@@ -1083,9 +1083,24 @@ svg {
   }
 }
 
+.splash__enter {
+  min-width: 220px;
+  margin: 1.4rem auto 0;
+  animation: riseIn 0.8s ease 0.6s both;
+}
+
+.splash__enter .icon {
+  transition: transform 0.25s ease;
+}
+
+.splash__enter:hover .icon,
+.splash__enter:focus-visible .icon {
+  transform: translateX(4px);
+}
+
 .splash__verse {
   max-width: 44ch;
-  margin-inline: auto;
+  margin: 1.25rem auto 0;
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   line-height: 1.6;

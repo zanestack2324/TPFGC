@@ -24,31 +24,33 @@
   };
 
   const splash = doc.getElementById('splash');
-  const splashKey = 'tpfgc-splash-seen';
+  const splashEnter = doc.getElementById('splash-enter');
+  const splashKey = 'tpfgc-welcome-seen';
 
   if (splash) {
-    let splashTimer = null;
-
     const hideSplash = () => {
       if (splash.classList.contains('is-hidden')) return;
       splash.classList.add('is-hidden');
       splash.setAttribute('aria-hidden', 'true');
       body.classList.remove('splash-open');
       storage.set(splashKey, '1');
-      if (splashTimer) window.clearTimeout(splashTimer);
+      if (doc.activeElement === splashEnter) splashEnter.blur();
     };
 
     if (reduceMotion || storage.get(splashKey) === '1') {
       splash.classList.add('is-hidden');
       splash.setAttribute('aria-hidden', 'true');
+      body.classList.remove('splash-open');
     } else {
       body.classList.add('splash-open');
-      splashTimer = window.setTimeout(hideSplash, 2500);
+      splash.setAttribute('aria-hidden', 'false');
       splash.addEventListener('click', hideSplash);
+      if (splashEnter) {
+        window.setTimeout(() => splashEnter.focus({ preventScroll: true }), 100);
+      }
       doc.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') hideSplash();
       });
-      window.setTimeout(hideSplash, 5000);
     }
   }
 
