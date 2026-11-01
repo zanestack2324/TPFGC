@@ -73,13 +73,10 @@
     } else {
       body.classList.add('splash-open');
       splash.setAttribute('aria-hidden', 'false');
-      splash.addEventListener('click', enterSplash);
       if (splashEnter) {
+        splashEnter.addEventListener('click', enterSplash);
         window.setTimeout(() => splashEnter.focus({ preventScroll: true }), 100);
       }
-      doc.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') hideSplash();
-      });
     }
   }
 
