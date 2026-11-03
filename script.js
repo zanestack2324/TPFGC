@@ -49,6 +49,7 @@
       splash.classList.add('is-hidden');
       splash.classList.remove('is-loading');
       splash.setAttribute('aria-hidden', 'true');
+      splash.setAttribute('inert', '');
       splash.removeAttribute('aria-busy');
       body.classList.remove('splash-open');
       storage.set(splashKey, '1');
@@ -69,9 +70,11 @@
     if (reduceMotion || storage.get(splashKey) === '1') {
       splash.classList.add('is-hidden');
       splash.setAttribute('aria-hidden', 'true');
+      splash.setAttribute('inert', '');
       body.classList.remove('splash-open');
     } else {
       body.classList.add('splash-open');
+      splash.removeAttribute('inert');
       splash.setAttribute('aria-hidden', 'false');
       if (splashEnter) {
         splashEnter.addEventListener('click', enterSplash);
@@ -193,12 +196,17 @@
     }
   }
 
-  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  const normalizePage = (value) => {
+    const file = value.split('/').pop() || 'index.html';
+    return file.replace(/\.html$/i, '') || 'index';
+  };
+
+  const currentFile = normalizePage(window.location.pathname);
   const pageLinks = [...doc.querySelectorAll('.nav-link, .mobile-nav__list a')];
 
   pageLinks.forEach((link) => {
-    const href = (link.getAttribute('href') || '').split('#')[0] || 'index.html';
-    const active = href === currentFile || (currentFile === '' && href === 'index.html');
+    const href = normalizePage((link.getAttribute('href') || '').split('#')[0] || 'index.html');
+    const active = href === currentFile;
     link.classList.toggle('active', active);
     link.classList.toggle('is-active', active);
     if (active) {
