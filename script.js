@@ -29,6 +29,25 @@
   const splashSound = doc.getElementById('splash-click-sound');
   const splashKey = 'tpfgc-welcome-seen';
 
+  const splashBackground = [
+    doc.getElementById('site-header'),
+    doc.getElementById('main'),
+    doc.querySelector('.site-footer'),
+    doc.querySelector('.back-to-top')
+  ].filter(Boolean);
+
+  const setSplashBackground = (inert) => {
+    splashBackground.forEach((element) => {
+      if (inert) {
+        element.setAttribute('inert', '');
+        element.dataset.splashInert = '1';
+      } else if (element.dataset.splashInert) {
+        element.removeAttribute('inert');
+        delete element.dataset.splashInert;
+      }
+    });
+  };
+
   const playClickSound = () => {
     if (!splashSound) return;
     try {
@@ -52,6 +71,7 @@
       splash.setAttribute('inert', '');
       splash.removeAttribute('aria-busy');
       body.classList.remove('splash-open');
+      setSplashBackground(false);
       storage.set(splashKey, '1');
       if (doc.activeElement === splashEnter) splashEnter.blur();
     };
@@ -74,12 +94,18 @@
       body.classList.remove('splash-open');
     } else {
       body.classList.add('splash-open');
+      setSplashBackground(true);
       splash.removeAttribute('inert');
       splash.setAttribute('aria-hidden', 'false');
       if (splashEnter) {
         splashEnter.addEventListener('click', enterSplash);
         window.setTimeout(() => splashEnter.focus({ preventScroll: true }), 100);
       }
+      doc.addEventListener('keydown', (event) => {
+        if (splash.classList.contains('is-hidden') || event.key !== 'Tab') return;
+        event.preventDefault();
+        if (splashEnter && !splashEnter.disabled) splashEnter.focus();
+      });
     }
   }
 
@@ -307,7 +333,7 @@
       dots.forEach((dot, dotIndex) => {
         const active = dotIndex === index;
         dot.classList.toggle('is-active', active);
-        dot.setAttribute('aria-selected', String(active));
+        dot.setAttribute('aria-pressed', String(active));
         dot.tabIndex = active ? 0 : -1;
       });
 
@@ -463,9 +489,98 @@
     }, 4200);
   };
 
+  const videoModal = doc.getElementById('video-modal');
+  const videoPlayer = videoModal ? videoModal.querySelector('[data-video-player]') : null;
+
+  if (videoModal && videoPlayer) {
+    const videoTitle = videoModal.querySelector('[data-video-title]');
+    const videoClose = videoModal.querySelector('[data-video-close]');
+    let videoIsOpen = false;
+    let lastVideoFocus = null;
+
+    const openVideo = (button) => {
+      const src = button.dataset.videoSrc;
+      if (!src) return;
+      videoIsOpen = true;
+      lastVideoFocus = button;
+
+      if (videoTitle) videoTitle.textContent = button.dataset.videoTitle || 'Message';
+      if (button.dataset.videoPoster) {
+        videoPlayer.setAttribute('poster', button.dataset.videoPoster);
+      } else {
+        videoPlayer.removeAttribute('poster');
+      }
+
+      videoPlayer.src = src;
+      videoPlayer.load();
+      videoModal.classList.add('is-open');
+      videoModal.removeAttribute('inert');
+      videoModal.setAttribute('aria-hidden', 'false');
+      body.classList.add('video-open');
+
+      const playback = videoPlayer.play();
+      if (playback) playback.catch(() => {});
+      if (videoClose) window.setTimeout(() => videoClose.focus(), 60);
+    };
+
+    const closeVideo = () => {
+      if (!videoIsOpen) return;
+      videoIsOpen = false;
+      videoPlayer.pause();
+      videoModal.classList.remove('is-open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      videoModal.setAttribute('inert', '');
+      body.classList.remove('video-open');
+
+      window.setTimeout(() => {
+        if (videoIsOpen) return;
+        videoPlayer.removeAttribute('src');
+        videoPlayer.removeAttribute('poster');
+        videoPlayer.load();
+      }, 350);
+
+      if (lastVideoFocus instanceof HTMLElement) lastVideoFocus.focus();
+    };
+
+    if (videoClose) videoClose.addEventListener('click', closeVideo);
+
+    videoModal.addEventListener('click', (event) => {
+      if (event.target === videoModal) closeVideo();
+    });
+
+    doc.addEventListener('keydown', (event) => {
+      if (!videoIsOpen) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeVideo();
+        return;
+      }
+
+      if (event.key !== 'Tab') return;
+
+      const focusables = [videoClose, videoPlayer].filter(Boolean);
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && doc.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && doc.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    doc.querySelectorAll('[data-video-src]').forEach((button) => {
+      button.addEventListener('click', () => openVideo(button));
+    });
+  }
+
   doc.querySelectorAll('.play-btn, [data-media]').forEach((button) => {
+    if (button.hasAttribute('data-video-src')) return;
     button.addEventListener('click', () => {
-      showToast('Full messages are coming soon. Please contact us for recordings.');
+      showToast('This message is coming soon. Please contact us for the recording.');
     });
   });
 
@@ -496,7 +611,7 @@
   });
 
   doc.querySelectorAll('[data-form]').forEach((form) => {
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       if (!form.checkValidity()) {
@@ -507,26 +622,52 @@
       const status = form.querySelector('[data-status]');
       const submitButton = form.querySelector('button[type="submit"]');
       const originalMarkup = submitButton ? submitButton.innerHTML : '';
+      const data = Object.fromEntries(new FormData(form).entries());
+      delete data.website;
 
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
       }
 
-      window.setTimeout(() => {
+      if (status) {
+        status.classList.remove('is-visible', 'is-error');
+        status.textContent = '';
+      }
+
+      try {
+        const response = await fetch(form.dataset.endpoint || '/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (!response.ok) throw new Error('request_failed');
+
         form.reset();
 
+        if (status) {
+          status.textContent = form.dataset.success || 'Thank you. Your message has been received.';
+          status.classList.add('is-visible');
+        }
+      } catch {
+        if (status) {
+          status.textContent = 'We could not send your message right now. Please email hello@pentecostalfaith.org or call +234 803 942 4541.';
+          status.classList.add('is-visible', 'is-error');
+        }
+      } finally {
         if (submitButton) {
           submitButton.disabled = false;
           submitButton.innerHTML = originalMarkup;
         }
 
         if (status) {
-          status.textContent = form.dataset.success || 'Thank you. Your message has been received.';
-          status.classList.add('is-visible');
-          window.setTimeout(() => status.classList.remove('is-visible'), 9000);
+          window.setTimeout(() => status.classList.remove('is-visible', 'is-error'), 12000);
         }
-      }, 800);
+      }
     });
   });
 

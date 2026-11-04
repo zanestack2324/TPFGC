@@ -7,28 +7,30 @@
   <meta name="description" content="Listen to biblical teaching and messages from The Pentecostal Faith Gospel Centre. Faith comes by hearing the Word of God.">
   <meta name="author" content="The Pentecostal Faith Gospel Centre">
   <meta name="theme-color" content="#0c1b22">
-  <link rel="canonical" href="https://www.pentecostalfaith.org/sermons.html">
-  <link rel="icon" href="LOGO.jpeg" type="image/jpeg">
-  <link rel="apple-touch-icon" href="LOGO.jpeg">
+  <link rel="canonical" href="https://tpfgc.vercel.app/sermons.html">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="logo-192.jpeg" type="image/jpeg" sizes="192x192">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Sermons | The Pentecostal Faith Gospel Centre">
   <meta property="og:description" content="Listen to biblical teaching and messages from The Pentecostal Faith Gospel Centre. Faith comes by hearing the Word of God.">
-  <meta property="og:url" content="https://www.pentecostalfaith.org/sermons.html">
+  <meta property="og:url" content="https://tpfgc.vercel.app/sermons.html">
   <meta property="og:site_name" content="The Pentecostal Faith Gospel Centre">
-  <meta property="og:image" content="https://www.pentecostalfaith.org/IMG%209.jpeg">
+  <meta property="og:image" content="https://tpfgc.vercel.app/IMG%209.jpeg">
   <meta property="og:image:alt" content="Pastor ministering the Word during a Sunday service">
   <meta property="og:locale" content="en_NG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sermons | The Pentecostal Faith Gospel Centre">
   <meta name="twitter:description" content="Listen to biblical teaching and messages from The Pentecostal Faith Gospel Centre. Faith comes by hearing the Word of God.">
-  <meta name="twitter:image" content="https://www.pentecostalfaith.org/IMG%209.jpeg">
+  <meta name="twitter:image" content="https://tpfgc.vercel.app/IMG%209.jpeg">
 
   <link rel="preload" as="image" href="IMG%209.jpeg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261104b">
   <script>
 document.documentElement.classList.add('js');
 window.addEventListener('load', function () {
@@ -37,6 +39,7 @@ window.addEventListener('load', function () {
     document.querySelectorAll('.reveal').forEach(function (element) { element.classList.add('is-visible'); });
     var splash = document.getElementById('splash');
     if (splash) { splash.classList.add('is-hidden'); splash.setAttribute('inert', ''); }
+    document.querySelectorAll('#site-header, #main, .site-footer, .back-to-top').forEach(function (element) { element.removeAttribute('inert'); });
     document.body.classList.remove('splash-open');
   }, 3500);
 });
@@ -47,12 +50,12 @@ window.addEventListener('load', function () {
     "@context": "https://schema.org",
     "@type": "Church",
     "name": "The Pentecostal Faith Gospel Centre",
-    "url": "https://www.pentecostalfaith.org/",
+    "url": "https://tpfgc.vercel.app/",
     "description": "A Christ-centred church committed to preaching the true Gospel, making disciples of all nations, and demonstrating the healing power of Jesus Christ.",
-    "image": "https://www.pentecostalfaith.org/HERO.jpeg",
-    "logo": "https://www.pentecostalfaith.org/LOGO.jpeg",
+    "image": "https://tpfgc.vercel.app/HERO.jpeg",
+    "logo": "https://tpfgc.vercel.app/LOGO.jpeg",
     "telephone": "+2348039424541",
-    "email": "hello@pentecostalfaith.org",
+    "email": "thepentecostalfaithgospel@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "14, Jesus House, Babatunde Abimbola Street, Lane 2, Ajadi Powerline, Ologuneru",
@@ -94,13 +97,13 @@ window.addEventListener('load', function () {
 
   <div class="splash" id="splash" role="dialog" aria-modal="true" aria-labelledby="splash-name" aria-describedby="splash-verse" aria-hidden="true" inert>
     <div class="splash__inner">
-      <div class="splash__logo"><img src="LOGO.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="190" height="190"></div>
+      <div class="splash__logo"><img src="logo-192.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="190" height="190"></div>
       <p class="splash__hand">Welcome to</p>
       <p class="splash__name" id="splash-name">The Pentecostal Faith<span>Gospel Centre</span></p>
       <div class="splash__line"><span></span></div>
       <button class="splash__enter btn-shine" id="splash-enter" type="button"><span>Enter Website</span></button>
       <div class="splash__loader" id="splash-loader" aria-hidden="true"><span class="loader"></span></div>
-      <audio id="splash-click-sound" src="click%20sound.wav" preload="auto"></audio>
+      <audio id="splash-click-sound" src="click-sound.mp3" preload="auto"></audio>
       <p class="splash__verse" id="splash-verse">&ldquo;Go ye therefore, and teach all nations&hellip;&rdquo; &mdash; Matthew 28:19</p>
     </div>
   </div>
@@ -114,10 +117,8 @@ window.addEventListener('load', function () {
           <span>Sunday &middot; 5:00 PM &middot; Thursday &middot; 10:00 AM</span>
 
   <div class="socials">
-    <a href="https://www.facebook.com/search/top?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search Facebook for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
-    <a href="https://www.instagram.com/explore/search/keyword/?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search Instagram for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
-    <a href="https://www.youtube.com/results?search_query=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search YouTube for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-youtube"/></svg></a>
-    <a href="https://x.com/search?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29&amp;f=user" target="_blank" rel="noopener noreferrer" aria-label="Search X for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg></a>
+    <a href="https://www.facebook.com/share/1CJ8BMdPF2/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Pentecostal Faith Gospel Centre on Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+    <a href="https://www.instagram.com/pentecostal.faith.gospel.centr/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Pentecostal Faith Gospel Centre on Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
   </div>
         </div>
       </div>
@@ -125,7 +126,7 @@ window.addEventListener('load', function () {
     <div class="header-main">
       <div class="container header-inner">
         <a href="index.html" class="brand" aria-label="The Pentecostal Faith Gospel Centre &mdash; home">
-          <span class="brand__mark"><img src="LOGO.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="74" height="74"></span>
+          <span class="brand__mark"><img src="logo-192.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="74" height="74"></span>
           <span class="brand__text"><span class="brand__name">The Pentecostal Faith</span><span class="brand__tag">Gospel Centre</span></span>
         </a>
         <nav class="primary-nav" aria-label="Primary navigation">
@@ -149,14 +150,12 @@ window.addEventListener('load', function () {
       <a href="contact.html#visit" class="btn btn--gold">Plan a Visit <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
       <div class="mobile-nav__contact">
         <a href="tel:+2348039424541">+234&nbsp;803&nbsp;942&nbsp;4541</a>
-        <a href="mailto:hello@pentecostalfaith.org">hello@pentecostalfaith.org</a>
+        <a href="mailto:thepentecostalfaithgospel@gmail.com">thepentecostalfaithgospel@gmail.com</a>
       </div>
 
   <div class="socials">
-    <a href="https://www.facebook.com/search/top?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search Facebook for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
-    <a href="https://www.instagram.com/explore/search/keyword/?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search Instagram for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
-    <a href="https://www.youtube.com/results?search_query=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search YouTube for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-youtube"/></svg></a>
-    <a href="https://x.com/search?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29&amp;f=user" target="_blank" rel="noopener noreferrer" aria-label="Search X for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg></a>
+    <a href="https://www.facebook.com/share/1CJ8BMdPF2/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Pentecostal Faith Gospel Centre on Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+    <a href="https://www.instagram.com/pentecostal.faith.gospel.centr/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Pentecostal Faith Gospel Centre on Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
   </div>
     </div>
   </div>
@@ -184,8 +183,8 @@ window.addEventListener('load', function () {
 
   <article class="sermon-feature reveal">
     <div class="sermon-feature__media">
-      <img src="IMG%209.jpeg" alt="Pastor ministering the Word during a Sunday service" loading="lazy">
-      <button class="play-btn" type="button" aria-label="Play the message Faith That Moves Mountains"><svg class="icon" aria-hidden="true"><use href="#icon-play"/></svg></button>
+      <img width="960" height="640" src="IMG%209.jpeg" alt="Pastor ministering the Word during a Sunday service" loading="lazy">
+      <button class="play-btn" type="button" aria-label="Play the message Faith That Moves Mountains" data-video-src="message-1.mp4" data-video-poster="message-1-poster.jpg" data-video-title="Faith That Moves Mountains"><svg class="icon" aria-hidden="true"><use href="#icon-play"/></svg></button>
     </div>
     <div class="sermon-feature__body">
       <span class="sermon-tag">Latest Message</span>
@@ -196,7 +195,7 @@ window.addEventListener('load', function () {
         <span><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg> Sunday Service</span>
         <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg> 42 min</span>
       </div>
-      <button type="button" class="text-link text-link--light" data-media>Watch the message <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+      <button type="button" class="text-link text-link--light" data-media data-video-src="message-1.mp4" data-video-poster="message-1-poster.jpg" data-video-title="Faith That Moves Mountains">Watch the message <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
     </div>
   </article>
     </div>
@@ -212,18 +211,18 @@ window.addEventListener('load', function () {
 
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%206.jpeg" alt="Congregation listening to the Word of God" loading="lazy">
+      <img width="1280" height="1920" src="IMG%206.jpeg" alt="Congregation listening to the Word of God" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Teaching</span>
       <h3>The Power of the Holy Ghost</h3>
       <p>Acts 1:8 · 38 min</p>
-      <button type="button" class="text-link" data-media>Listen now <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
+      <button type="button" class="text-link" data-media data-video-src="message-2.mp4" data-video-poster="message-2-poster.jpg" data-video-title="The Power of the Holy Ghost">Listen now <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
     </div>
   </article>
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%2014.jpeg" alt="A worshipper in a moment of prayer" loading="lazy">
+      <img width="853" height="1280" src="IMG%2014.jpeg" alt="A worshipper in a moment of prayer" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Encouragement</span>
@@ -234,7 +233,7 @@ window.addEventListener('load', function () {
   </article>
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%204.jpeg" alt="A worshipper receiving the Word of God" loading="lazy">
+      <img width="853" height="1280" src="IMG%204.jpeg" alt="A worshipper receiving the Word of God" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Sunday Service</span>
@@ -245,7 +244,7 @@ window.addEventListener('load', function () {
   </article>
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%205.jpeg" alt="Church members in fellowship after service" loading="lazy">
+      <img width="853" height="1280" src="IMG%205.jpeg" alt="Church members in fellowship after service" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Teaching</span>
@@ -256,7 +255,7 @@ window.addEventListener('load', function () {
   </article>
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%2013.jpeg" alt="A portrait of faith and grace" loading="lazy">
+      <img width="1280" height="1280" src="IMG%2013.jpeg" alt="A portrait of faith and grace" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Encouragement</span>
@@ -267,7 +266,7 @@ window.addEventListener('load', function () {
   </article>
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%2010.jpeg" alt="Joy in the presence of God" loading="lazy">
+      <img width="1280" height="853" src="IMG%2010.jpeg" alt="Joy in the presence of God" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Teaching</span>
@@ -278,7 +277,7 @@ window.addEventListener('load', function () {
   </article>
   <article class="archive-card reveal">
     <div class="archive-card__thumb">
-      <img src="IMG%203.jpeg" alt="Praise and adoration during a church service" loading="lazy">
+      <img width="1280" height="853" src="IMG%203.jpeg" alt="Praise and adoration during a church service" loading="lazy">
     </div>
     <div class="archive-card__body">
       <span class="event-card__tag">Sunday Service</span>
@@ -297,7 +296,7 @@ window.addEventListener('load', function () {
 
   <section class="section photo-section" style="--photo: url('IMG%206.jpeg')">
     <div class="container series-card">
-      <div class="photo-frame tape reveal reveal--left"><img src="IMG%2010.jpeg" alt="Joy in the presence of God during worship" loading="lazy"></div>
+      <div class="photo-frame tape reveal reveal--left"><img width="1280" height="853" src="IMG%2010.jpeg" alt="Joy in the presence of God during worship" loading="lazy"></div>
       <div class="series-copy reveal reveal--right">
         <p class="eyebrow eyebrow--light">Current Series</p>
         <h2 class="section-title">Rooted: a life built on <em>the Word.</em></h2>
@@ -349,16 +348,14 @@ window.addEventListener('load', function () {
     <div class="container footer__grid">
       <div class="footer__brand">
         <a href="index.html" class="brand brand--footer" aria-label="The Pentecostal Faith Gospel Centre &mdash; home">
-          <span class="brand__mark"><img src="LOGO.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="64" height="64" loading="lazy"></span>
+          <span class="brand__mark"><img src="logo-192.jpeg" alt="The Pentecostal Faith Gospel Centre logo" width="64" height="64" loading="lazy"></span>
           <span class="brand__text"><span class="brand__name">The Pentecostal Faith</span><span class="brand__tag">Gospel Centre</span></span>
         </a>
         <p>Making disciples of all nations, raising leaders and giving hope to the hopeless through the true Gospel of Jesus Christ.</p>
 
   <div class="socials">
-    <a href="https://www.facebook.com/search/top?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search Facebook for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
-    <a href="https://www.instagram.com/explore/search/keyword/?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search Instagram for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
-    <a href="https://www.youtube.com/results?search_query=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29" target="_blank" rel="noopener noreferrer" aria-label="Search YouTube for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-youtube"/></svg></a>
-    <a href="https://x.com/search?q=The%20Pentecostal%20Faith%20Gospel%20Centre%20%28A%20Fellowship%20Without%20Walls%29&amp;f=user" target="_blank" rel="noopener noreferrer" aria-label="Search X for The Pentecostal Faith Gospel Centre"><svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg></a>
+    <a href="https://www.facebook.com/share/1CJ8BMdPF2/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Pentecostal Faith Gospel Centre on Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+    <a href="https://www.instagram.com/pentecostal.faith.gospel.centr/" target="_blank" rel="noopener noreferrer" aria-label="Follow The Pentecostal Faith Gospel Centre on Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
   </div>
       </div>
 
@@ -372,7 +369,7 @@ window.addEventListener('load', function () {
           <li><a href="sermons.html">Sermons</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="give.html">Give</a></li>
+          <li><a href="give.html">Give</a></li><li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
 
@@ -389,7 +386,7 @@ window.addEventListener('load', function () {
         <ul class="footer__contact">
           <li><svg class="icon" aria-hidden="true"><use href="#icon-pin"/></svg> 14, Jesus House, Babatunde Abimbola Street, Lane 2, Ajadi Powerline, Ologuneru, Ibadan, Oyo State, Nigeria</li>
           <li><a href="tel:+2348039424541"><svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg> +234&nbsp;803&nbsp;942&nbsp;4541</a></li>
-          <li><a href="mailto:hello@pentecostalfaith.org"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg> hello@pentecostalfaith.org</a></li>
+          <li><a href="mailto:thepentecostalfaithgospel@gmail.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg> thepentecostalfaithgospel@gmail.com</a></li>
         </ul>
         <a href="contact.html#visit" class="btn btn--gold btn--small">Plan a Visit</a>
       </div>
@@ -411,8 +408,22 @@ window.addEventListener('load', function () {
     </figure>
     <button class="lightbox__nav lightbox__nav--next" type="button" data-next aria-label="Next image"><svg class="icon" aria-hidden="true"><use href="#icon-chevron-right"/></svg></button>
   </div>
+  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" aria-hidden="true" inert>
+    <div class="video-modal__panel">
+      <div class="video-modal__head">
+        <div>
+          <span class="video-modal__eyebrow">Message</span>
+          <h2 class="video-modal__title" id="video-modal-title" data-video-title>Message</h2>
+        </div>
+        <button class="video-modal__close" type="button" data-video-close aria-label="Close video player"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="video-modal__frame">
+        <video data-video-player controls playsinline preload="none"></video>
+      </div>
+    </div>
+  </div>
   <button class="back-to-top" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></button>
   <div class="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <script src="script.js?v=20261104b"></script>
 </body>
 </html>
